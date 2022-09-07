@@ -36,20 +36,21 @@ const nextButton = document.getElementById('next');
 const inverseButton = document.getElementById("inversebtn")
 let startIndex = 0;
 let sideimgclass = "sideimg"
+let index = false
+let control = true
 
 //creo il carousel principale e le thumb img
 imgassignment(images)
 
 //intervallo
-let interval = setInterval(moveCarouselForward, 3000)
+let interval
+verse()
 
 //eventi
 previousButton.addEventListener('click', moveCarouselPrevious);
 nextButton.addEventListener('click', moveCarouselForward);
-inverseButton.addEventListener("click", function () {
-    clearInterval(interval)
-    let inverseInterval = setInterval(moveCarouselPrevious, 3000)
-});
+inverseButton.addEventListener("click", verse);
+
 
 //funzioni
 function imgassignment(images) {
@@ -68,19 +69,28 @@ function imgassignment(images) {
 }
 
 function moveCarouselForward() {
-    clearInterval(interval)
+    //clearInterval(interval)
     // se l'indice si trova in fondo allora lo riposizione all'inizio dell'array
     startIndex = startIndex < images.length - 1 ? startIndex + 1 : 0;
     imgassignment(images, startIndex)
-    interval = setInterval(moveCarouselForward, 3000)
+    //verse()
 }
 
 function moveCarouselPrevious() {
-    clearInterval(interval)
+    // clearInterval(interval)
     // se l'indice è in prima posizione si valorizza all'ultima posizione dell'array
     startIndex = startIndex > 0 ? startIndex - 1 : images.length - 1;
     imgassignment(images)
-    interval = setInterval(moveCarouselForward, 3000)
+    //verse()
+}
 
+function verse() {
+    index = index === true ? false : true
+    clearInterval(interval)
+    if (index === false) {
+        interval = setInterval(moveCarouselPrevious, 3000)
+    } else {
+        interval = setInterval(moveCarouselForward, 3000)
+    }
 }
 
