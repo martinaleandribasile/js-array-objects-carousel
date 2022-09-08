@@ -47,8 +47,8 @@ let interval
 verse()
 
 //eventi
-previousButton.addEventListener('click', moveCarouselPrevious);
-nextButton.addEventListener('click', moveCarouselForward);
+previousButton.addEventListener("click", moveCarouselPrevious);
+nextButton.addEventListener("click", moveCarouselForward);
 inverseButton.addEventListener("click", verse);
 
 
@@ -72,12 +72,12 @@ function moveCarouselForward() {
     //clearInterval(interval)
     // se l'indice si trova in fondo allora lo riposizione all'inizio dell'array
     startIndex = startIndex < images.length - 1 ? startIndex + 1 : 0;
-    imgassignment(images, startIndex)
+    imgassignment(images)
     //verse()
 }
 
 function moveCarouselPrevious() {
-    // clearInterval(interval)
+    //clearInterval(interval)
     // se l'indice è in prima posizione si valorizza all'ultima posizione dell'array
     startIndex = startIndex > 0 ? startIndex - 1 : images.length - 1;
     imgassignment(images)
